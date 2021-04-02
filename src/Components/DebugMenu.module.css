@@ -1,0 +1,42 @@
+.showMenu {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	border-radius: 0.25rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	font-size: 0.75em;
+}
+
+.menu {
+	position: fixed;
+	top: 4rem;
+	bottom: 1rem;
+	left: 1rem;
+	right: 1rem;
+	background: repeating-linear-gradient(-45deg,
+		#2C172EC0,
+		#2C172EC0 10px,
+		#2C172EC8 10px,
+		#2C172EC8 20px
+	);
+	padding: 1rem;
+	border-radius: 0.25rem;
+	font-size: 12px;
+	text-align: left;
+	overflow-y: auto;
+}
+
+.menu dt {
+	float: left;
+	width: 4rem;
+}
+
+.menu dd {
+	margin-left: 5rem;
+}
+
+.menu ul {
+	list-style: none;
+	padding: 0;
+}

@@ -1,0 +1,209 @@
+ALL KNOBS:
+	- Massive Knob2
+	- Eres LP, Resonator
+	- Crush
+	- LP Bus
+
+1 Sub
+	A0 @ t=5.5
+	Operator
+		Sine @ -0
+		modulated by triangle @ -42
+		Volume @ -12
+	Fader @ -18.6
+	=> Master
+
+2 Binaural
+	Start @ t=16
+	Binaural
+		Bass Freq 82.0Hz
+		Beat Freq 4.00Hz
+		Attack 20.0s
+	Fader @ -31.7
+	=> Master
+
+3 Massive
+	A1 @ t=13.8
+	Massive
+		Osc1
+			Sin-Tri
+			Wt-position @ 65%
+			Amp @ 100% mod LFO8 from (150% clamped) to 50%
+		Osc2
+			Sin-Tri
+			Wt-position @ 50% mod LFO5 from -10% to 100%
+			Amp @ 65% mod LFO7 from 40% to 90%
+		Osc3
+			Sin-Tri
+			Pitch @ 7.00
+			Wt-position @ 15% mod LFO6 from 0% to 30%
+			Amp @ 75%
+		LFO5
+			Sine
+			Rate @ 60% mod LFO6 from 55% to 65%
+		LFO6
+			Sine
+			Rate @ 15%
+		LFO7
+			Sine
+			Rate @ 65% mod LFO8 from 50% to 80%
+			Amp @ 75% mod LFO8 from 50% to 100%
+		LFO8
+			Sine
+			Rate @ 65%
+			Amp @ 0% mod Knob2 from 0% to 65%
+
+		C Tube
+			Dry/wet @ 0% mod Knob2 from 0% to 100%
+			Drive @ 85% mod LFO5 from 75% to 95%
+
+	Charsiesis
+		16 voices
+		Delay 2..20ms
+		Movement 0..5ms/s
+		Stereo delay independent
+
+	EQ
+		Lowpass 24dB/oct @ 250Hz with Q=1
+
+	Fader @ -25.5
+	=> A Reverb @ -8
+	=> Master
+
+4 Field
+	Field
+		Rain @ 100%
+		Haight @ 55%
+		Power @ 20%
+		Gain @ 65%
+	Fader @ -22
+	=> B crushverb @ -0
+
+5 Eres
+	Sample
+	Pro-L
+		Gain +16.6
+	Rack
+		Knobs:
+			LP
+				EQ3 GainMid -17..0db
+				EQ3 GainHi -27.2..0db
+			Resonator
+				FX Dry/Wet 37..127
+		Pro-Q
+			Highpass 24dB/oct @ 87Hz with Q=1
+			Highshelf @ 964Hz with Gain @ -7.85, Q=1
+			Lowpass 24dB/oct @ 8.5KHz with Q=1.13
+		EQ3
+			GainLow -0
+			GainMid mod LPKnob -17..0
+			GainHi mod LPKnob -27.2..0
+			FreqLow 250Hz
+			FreqHi 2.27KHz
+		Rack: FX
+			Knobs:
+				Dry/Wet
+					Resonators Dry/Wet 0..100%
+					FilterDelay Dry/Wet 0..127
+					Reverb Dry/Wet 0..100%
+			Compressor
+				Ratio 4.2:1
+				Atk 2ms
+				Release 80ms
+				100% wet
+				Auto makeup gain
+			Resonators
+				LP Filter 900Hz
+				Resonator mode A
+				Decay 81.7
+				Constant decay time/pitch
+				Color 31.7
+				I: A1 -0db
+				II: +12 -8.6db
+				III: -5 -0.92db
+				IV: +5 -7.33db
+				V: +7 +6db
+				Width 100%
+				Gain +12.9db
+				Dry/Wet mod ResKnob 0..100%
+			Filter Delay
+				L
+					3.32kHz
+					0.75 band width
+					235ms
+					46% feedback
+					pan 50L
+					Vol -6.4db
+				L+R
+					290Hz
+					2.25 band width
+					633ms
+					60% feedback
+					pan C
+					Vol -8dB
+				R
+					5.33kHz
+					1.75 band width
+					219ms
+					60% feedback
+					pan 50R
+					Vol -5.4dB
+				Wet -inf..0 dB
+				Dry -7.3..inf dB
+			Reverb
+				HiCut 830Hz w=5.85
+				2.5ms predelay
+				...whatever, it's a rever
+	Rack: Haas
+		L Delay 0
+		R Delay 12ms
+
+	Fader @ -31
+	=> A Reverb @ -12.4
+	=> C Delay @ 0
+	=> Master
+
+A Reverb
+	epicVerb
+		0 predelay
+		4.2s time
+
+	Fader @ -0
+	=> LP Bus
+
+B crushverb
+	epicVerb
+		0 predelay
+		4.2s time
+	Rack: Notocrush
+		Knobs: Crush
+		Dry mod CrushKnob -0..inf
+		Wet mod CrushKnob -inf..11.8
+		Erosion
+			Freq 1.92k..18.0kHz
+			Width 0.17
+			Amount 190
+		Bitcrush
+			Bit reduction 3
+			Downsample 10..13
+
+	Fader @ -20.5
+	=> A Reverb @ -9.2
+	=> LP Bus
+
+C Delay
+	Delay
+		125ms
+		21% feedback
+	Fader @ -10.6
+	=> LP Bus
+
+LP Bus
+	Knobs: LP
+	Lowpass mod LPKnob 300Hz..4.9kHz Q=0.82
+	Fader @ -10
+	=> Master
+
+Master
+	Pro-L
+		Gain +13.8

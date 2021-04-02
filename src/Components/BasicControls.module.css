@@ -1,0 +1,27 @@
+.root {
+	display: grid;
+	grid-gap: 2rem;
+	grid-auto-flow: column;
+}
+
+@media (orientation: portrait) {
+	.root {
+		grid-auto-flow: row;
+	}
+}
+
+.button {
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: transparent;
+	border-radius: 50%;
+	width: 10rem;
+	height: 10rem;
+	transition: background 100ms linear, color 100ms linear;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.button:hover {
+	background: transparent;
+}
